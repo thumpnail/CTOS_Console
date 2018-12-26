@@ -1,0 +1,81 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CTOS_console;
+
+namespace CTOS_console {
+    class CTOSmain  userDB {
+
+        public static bool hacker_isInside = false;
+        public static string userNameIn;
+        public static string userPasswordIn;
+        public static string filename;
+
+        public static void Main() {
+            userDB user = new userDB();
+            
+            welcome();
+        }
+
+        public static void welcome() {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine(---------------------------------------);
+            Console.WriteLine(hallo und herzlich willkommen zu);
+            Console.WriteLine(---------------------------------------);
+            Console.WriteLine(@@@@@ @@@@@@@ @@@@@@ @@@@@@);
+            Console.WriteLine(@        @    @    @ @     );
+            Console.WriteLine(@        @    @    @ @@@@@@);
+            Console.WriteLine(@        @    @    @      @);
+            Console.WriteLine(@@@@@    @    @@@@@@ @@@@@@);
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(Anmeldung);
+            Console.WriteLine();
+
+            Console.Write(Benutzernamen );
+            userNameIn = Console.ReadLine();
+            Console.Write(Passwort );
+            userPasswordIn = Console.ReadLine();
+            login();
+        }
+
+        public static void login() {
+            if (File.Exists(HdateienVisual Studio Community 2015CTOS_consoleCTOS_consoleuser + getFilename())) {
+                Console.WriteLine(getFilename());
+                if (CTOS_console.userDB.name.Equals(userNameIn)) {
+                    if (CTOS_console.userDB.password.Equals(userPasswordIn)) {
+
+                    } else {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(falsches passwort);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } else {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(sie haben kein akkount. Bitte wenden sie sich an den admin.);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+            Console.ReadLine();
+        }
+
+        public static void logout() {
+
+        }
+
+        public static void restart() {
+            Console.Clear();
+            Main();
+        }
+
+        public static string getFilename() {
+            filename = userNameIn + .txt;
+            return filename;
+        }
+    }
+}

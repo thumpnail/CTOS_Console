@@ -1,0 +1,12 @@
+Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.dll
+Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.pdb
+Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csprojResolveAssemblyReference.cache
+Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csproj.CoreCompileInputs.cache
+Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.dll
+Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.pdb
+Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.dll
+Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.pdb
+Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csprojAssemblyReference.cache
+Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csproj.CoreCompileInputs.cache
+Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.dll
+Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.pdb

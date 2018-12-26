@@ -1,0 +1,2567 @@
+diff --git a/.vs/CTOS_console/DesignTimeBuild/.dtbcache b/.vs/CTOS_console/DesignTimeBuild/.dtbcache
+new file mode 100644
+index 0000000..ed84d2c
+Binary files /dev/null and b/.vs/CTOS_console/DesignTimeBuild/.dtbcache differ
+diff --git a/.vs/CTOS_console/v15/Server/sqlite3/db.lock b/.vs/CTOS_console/v15/Server/sqlite3/db.lock
+new file mode 100644
+index 0000000..e69de29
+diff --git a/.vs/CTOS_console/v15/Server/sqlite3/storage.ide b/.vs/CTOS_console/v15/Server/sqlite3/storage.ide
+new file mode 100644
+index 0000000..0e82691
+Binary files /dev/null and b/.vs/CTOS_console/v15/Server/sqlite3/storage.ide differ
+diff --git a/CMDh/CMDh.csproj b/CMDh/CMDh.csproj
+new file mode 100644
+index 0000000..2e88d80
+--- /dev/null
++++ b/CMDh/CMDh.csproj
+@@ -0,0 +1,47 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
++  <PropertyGroup>
++    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
++    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
++    <ProjectGuid>{486A8A15-C412-4DF2-A0FF-AC68110B423F}</ProjectGuid>
++    <OutputType>Library</OutputType>
++    <AppDesignerFolder>Properties</AppDesignerFolder>
++    <RootNamespace>CMDh</RootNamespace>
++    <AssemblyName>CMDh</AssemblyName>
++    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
++    <FileAlignment>512</FileAlignment>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
++    <DebugSymbols>true</DebugSymbols>
++    <DebugType>full</DebugType>
++    <Optimize>false</Optimize>
++    <OutputPath>bin\Debug\</OutputPath>
++    <DefineConstants>DEBUG;TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
++    <DebugType>pdbonly</DebugType>
++    <Optimize>true</Optimize>
++    <OutputPath>bin\Release\</OutputPath>
++    <DefineConstants>TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <ItemGroup>
++    <Reference Include="System" />
++    <Reference Include="System.Core" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Data.DataSetExtensions" />
++    <Reference Include="Microsoft.CSharp" />
++    <Reference Include="System.Data" />
++    <Reference Include="System.Net.Http" />
++    <Reference Include="System.Xml" />
++  </ItemGroup>
++  <ItemGroup>
++    <Compile Include="CommandsHacker.cs" />
++    <Compile Include="Properties\AssemblyInfo.cs" />
++  </ItemGroup>
++  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
++</Project>
+\ No newline at end of file
+diff --git a/CMDh/CommandsHacker.cs b/CMDh/CommandsHacker.cs
+new file mode 100644
+index 0000000..758830c
+--- /dev/null
++++ b/CMDh/CommandsHacker.cs
+@@ -0,0 +1,237 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++
++namespace CTOS_Console {
++    public class CommandsHacker {
++
++
++
++        //command parameter
++
++        private static bool knowIP = false;
++        private static string IP;
++        private static bool knowPS = false;
++        private static bool isConnectedClient = false;
++        private static bool isConnectedServer = false;
++        private static bool isConnectedMobilephone = false;
++        private static bool isConnectedInternet = false;
++        private static bool isConnectedGoogle = false;
++        private static bool AntiVirus = false;
++        private static bool firewall = false;
++        private static bool Backdoor = false;
++        private static bool ini = false;
++
++        private static string[] hackerCommands = { /*0*/"listCommands", /*1*/"logout", /*2*/"startHackSoftware", /*3*/"getPassword",
++            /*4*/"install_Backdoor", /*5*/"install_Virus", /*6*/"getBankAccounts", /*7*/"download_data", /*8*/"descript_data",
++            /*9*/"hack_ip", /*10*/"hack_Blackout", /*11*/"hack_Server", /*12*/"hack_Moilephone", /*13*/"hack_firewall",
++            /*14*/"hack_antivirus", /*15*/"connect_client", /*16*/"connect_server", /*17*/"connect_mobilephone",
++            /*18*/"connect_internet", /*19*/"connect_google", /*20*/"disconnect_client", /*21*/"disconnect_server",
++            /*22*/"disconnect_mobilephone", /*23*/"disconnect_internet", /*24*/"disconnect_google" };
++
++        //Standard commands)
++
++        public static void listCommands() {
++            for (int i = 0; i < hackerCommands.Length; i++) {
++                if (i == 0 || i == 1 || i == 2 || i == 3 || i == 9 || i == 18) {
++                    Console.ForegroundColor = ConsoleColor.Green;
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Yellow;
++                }
++                Console.WriteLine(hackerCommands[i]);
++
++            }
++            Console.ForegroundColor = ConsoleColor.White;
++        }
++
++        public static void logout() {
++            CTOS_Console.MainConsole.logout = true;
++            Console.Clear();
++            CTOSmain.welcome();
++        }
++
++        //hacker commands
++
++        public static void startHackSoftware() {
++
++            Random rnd = new Random();
++
++            for (int i = 0; i < rnd.Next(6, 20); i++) {
++                Console.Write(".");
++                CTOS_Console.Wait.waitSec(1);
++            }
++
++            ini = true;
++            Console.WriteLine("hackSW wurde Initialisiert");
++            Console.hackerConsole();
++        }
++
++        public static void getPassword() {
++
++            Random rnd = new Random();
++
++            if (ini) {
++                if (knowIP && isConnectedClient && isConnectedInternet || knowIP && isConnectedGoogle && isConnectedInternet || knowIP && isConnectedMobilephone && isConnectedInternet || knowIP && isConnectedServer && isConnectedInternet) {
++                    Console.WriteLine("Get component... Please wait");
++
++                    for (int i = 0; i < rnd.Next(30, 100); i++) {
++                        Console.Write(".");
++                        wait.waitMilsec(rnd.Next(100, 2000));
++                    }
++
++                    Console.WriteLine("Component downloaded");
++                    wait.waitSec(2);
++                    Console.WriteLine("Search crack server...");
++
++                    for (int i = 0; i < rnd.Next(30, 1000); i++) {
++                        Console.Write(".");
++                        wait.waitMilsec(rnd.Next(100, 2000));
++                    }
++
++                    Console.WriteLine("Crack server found");
++                    wait.waitSec(2);
++                    Console.WriteLine("Search password... Please wait");
++
++                    for (int i = 0; i < rnd.Next(30, 100); i++) {
++                        Console.Write(".");
++                        wait.waitMilsec(rnd.Next(100, 2000));
++                    }
++
++                    Console.WriteLine("Password found");
++
++                    knowPS = true;
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine("you are not connected");
++                    Console.ForegroundColor = ConsoleColor.White;
++                }
++            }
++        }
++
++        public static void install_Backdoor() {
++
++        }
++
++        public static void install_Virus() {
++
++        }
++
++        public static void getBankAccounts() {
++
++        }
++
++        public static void download_data() {
++
++        }
++
++        public static void descript_data() {
++
++        }
++
++        public static void hack_ip() {
++            if (ini) {
++                Console.Write("IP: ");
++                IP = Console.ReadLine();
++                Console.WriteLine("got ip");
++                knowIP = true;
++            }
++        }
++
++        public static void hack_Blackout() {
++
++        }
++
++        public static void hack_Server() {
++
++        }
++
++        public static void hack_Moilephone() {
++
++        }
++
++        public static void hack_firewall() {
++
++        }
++
++        public static void hack_antivirus() {
++
++        }
++
++        public static void connect_client() {
++            if (knowIP) {
++
++            }
++        }
++
++        public static void connect_server() {
++
++        }
++
++        public static void connect_mobilephone() {
++
++        }
++
++        public static void connect_internet() {
++            Random rnd = new Random();
++
++            Console.Write("Connecting to Internet");
++
++            do {
++                for (int i = 0; i < rnd.Next(30, 100); i++) {
++                    Console.Write(".");
++                    wait.waitMilsec(rnd.Next(100, 2000));
++                }
++            } while (!connect_failure(1, 100, 50));
++
++            Console.WriteLine();
++            isConnectedInternet = true;
++            Console.WriteLine("Connected to Internet");
++        }
++
++        public static void connect_google() {
++
++        }
++
++        public static void disconnect_ip() {
++
++        }
++
++        public static void disconnect_client() {
++
++        }
++
++        public static void disconnect_server() {
++
++        }
++
++        public static void disconnect_mobilephone() {
++
++        }
++
++        public static void disconnect_internet() {
++
++        }
++
++        public static void disconnect_google() {
++
++        }
++
++        public static void wrongCommand() {
++
++        }
++
++        public static bool connect_failure(int min, int max, int c) {
++            Random rnd = new Random();
++            int randomInt = rnd.Next(min, max);
++            if (randomInt <= c) {
++                return false;
++            } else {
++                return true;
++            }
++        }
++
++    }
++}
+diff --git a/CMDh/Properties/AssemblyInfo.cs b/CMDh/Properties/AssemblyInfo.cs
+new file mode 100644
+index 0000000..dabba1d
+--- /dev/null
++++ b/CMDh/Properties/AssemblyInfo.cs
+@@ -0,0 +1,36 @@
++﻿using System.Reflection;
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++
++// Allgemeine Informationen über eine Assembly werden über die folgenden
++// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
++// die einer Assembly zugeordnet sind.
++[assembly: AssemblyTitle("CMDh")]
++[assembly: AssemblyDescription("")]
++[assembly: AssemblyConfiguration("")]
++[assembly: AssemblyCompany("")]
++[assembly: AssemblyProduct("CMDh")]
++[assembly: AssemblyCopyright("Copyright ©  2018")]
++[assembly: AssemblyTrademark("")]
++[assembly: AssemblyCulture("")]
++
++// Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
++// für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von
++// COM aus zugreifen müssen, sollten Sie das ComVisible-Attribut für diesen Typ auf "True" festlegen.
++[assembly: ComVisible(false)]
++
++// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
++[assembly: Guid("486a8a15-c412-4df2-a0ff-ac68110b423f")]
++
++// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
++//
++//      Hauptversion
++//      Nebenversion
++//      Buildnummer
++//      Revision
++//
++// Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
++// indem Sie "*" wie unten gezeigt eingeben:
++// [assembly: AssemblyVersion("1.0.*")]
++[assembly: AssemblyVersion("1.0.0.0")]
++[assembly: AssemblyFileVersion("1.0.0.0")]
+diff --git a/CMDh/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/CMDh/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDh/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/CMDh/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDh/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/CMDh/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDh/obj/Release/build.force b/CMDh/obj/Release/build.force
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDu/CMDu.csproj b/CMDu/CMDu.csproj
+new file mode 100644
+index 0000000..2665ac4
+--- /dev/null
++++ b/CMDu/CMDu.csproj
+@@ -0,0 +1,47 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
++  <PropertyGroup>
++    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
++    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
++    <ProjectGuid>{D7D87105-A7BF-4AE6-83D2-C98BAEE3F4BF}</ProjectGuid>
++    <OutputType>Library</OutputType>
++    <AppDesignerFolder>Properties</AppDesignerFolder>
++    <RootNamespace>CMDu</RootNamespace>
++    <AssemblyName>CMDu</AssemblyName>
++    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
++    <FileAlignment>512</FileAlignment>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
++    <DebugSymbols>true</DebugSymbols>
++    <DebugType>full</DebugType>
++    <Optimize>false</Optimize>
++    <OutputPath>bin\Debug\</OutputPath>
++    <DefineConstants>DEBUG;TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
++    <DebugType>pdbonly</DebugType>
++    <Optimize>true</Optimize>
++    <OutputPath>bin\Release\</OutputPath>
++    <DefineConstants>TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <ItemGroup>
++    <Reference Include="System" />
++    <Reference Include="System.Core" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Data.DataSetExtensions" />
++    <Reference Include="Microsoft.CSharp" />
++    <Reference Include="System.Data" />
++    <Reference Include="System.Net.Http" />
++    <Reference Include="System.Xml" />
++  </ItemGroup>
++  <ItemGroup>
++    <Compile Include="CommandsUser.cs" />
++    <Compile Include="Properties\AssemblyInfo.cs" />
++  </ItemGroup>
++  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
++</Project>
+\ No newline at end of file
+diff --git a/CMDu/CommandsUser.cs b/CMDu/CommandsUser.cs
+new file mode 100644
+index 0000000..3091e90
+--- /dev/null
++++ b/CMDu/CommandsUser.cs
+@@ -0,0 +1,142 @@
++﻿using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++namespace CTOS_Console {
++    public class CommandsUser {
++        public static string line;
++        public static int counter = 0;
++
++        public static void addUser() {
++            if (CTOS_Console.CTOSmain.rights == 3) {
++
++                Console.WriteLine("Gebe einen Benutzernamen an");
++                string nameCreateUser = Console.ReadLine();
++
++                if (!(File.Exists(CTOS_Console.userDB.userFolderPath + "/" + nameCreateUser + ".txt"))) {
++
++                    FileStream addUserFileStream = new FileStream(CTOS_Console.userDB.userFolderPath + "/" + nameCreateUser + ".txt", FileMode.Create);
++                    StreamWriter addUserStreamWriter = new StreamWriter(addUserFileStream);
++
++                    Console.Write("Gebe ein passwort an: ");
++                    string passwordCreateUser = Console.ReadLine();
++                    Console.Write("Gebe die rechts stufe an(1, 2, 3): ");
++                    string rightsCreateUser = Console.ReadLine();
++
++                    string[] linesUserCreate = { nameCreateUser, passwordCreateUser, rightsCreateUser };
++
++                    addUserStreamWriter.WriteLine(linesUserCreate[0]);
++                    addUserStreamWriter.WriteLine(linesUserCreate[1]);
++                    addUserStreamWriter.WriteLine(linesUserCreate[2]);
++                    addUserStreamWriter.Close();
++                    addUserFileStream.Close();
++                    CTOS_Console.Console.userConsole();
++
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine("Dieser Benutzer exestiert schon, melden sie sich an oder nehmen einen anderen benutzernamen");
++                    Console.ForegroundColor = ConsoleColor.White;
++                    Console.ReadKey();
++                    CTOS_Console.Console.userConsole();
++                }
++            } else {
++                Console.ForegroundColor = ConsoleColor.Red;
++                Console.WriteLine("du benötigst admin rechte um einen benutzter anzulegen");
++                Console.ForegroundColor = ConsoleColor.White;
++                Console.ReadKey();
++                CTOS_Console.Console.userConsole();
++            }
++
++        }
++
++        public static void editUser() {
++            //eingelesen = 1 // ändern = 2
++            string a1 = "";
++            string a2 = "", b2 = "";
++            int c2 = 0;
++
++            Console.Write("Benutzername : ");
++            a1 = Console.ReadLine();
++
++            if (CTOS_Console.CTOSmain.rights >= 3) {
++                if (File.Exists(CTOS_Console.userDB.userFolderPath + "/" + a1 + ".txt")) {
++                    StreamReader editUserStreamReader = new StreamReader(CTOS_Console.userDB.userFolderPath + "/" + a1 + ".txt");
++                    while ((line = editUserStreamReader.ReadLine()) != null) {
++                        if (counter == 0) {
++                            a2 = line;
++                        } else if (counter == 1) {
++                            b2 = line;
++                        } else if (counter == 2) {
++                            c2 = Int32.Parse(line);
++                        }
++                        counter++;
++                    }
++                    Console.WriteLine(a2);
++                    Console.WriteLine(b2);
++                    Console.WriteLine(c2);
++                    Console.ReadKey();
++                    CTOS_Console.Console.userConsole();
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine("Dieser Benutzer exestiert nicht");
++                    Console.ForegroundColor = ConsoleColor.White;
++                    Console.ReadKey();
++                    CTOS_Console.Console.userConsole();
++                }
++            } else {
++                Console.ForegroundColor = ConsoleColor.Red;
++                Console.WriteLine("du benötigst admin rechte um einen benutzter anzulegen");
++                Console.ForegroundColor = ConsoleColor.White;
++                Console.ReadKey();
++                CTOS_Console.Console.userConsole();
++            }
++        }
++
++        public static void listUser() {
++
++        }
++
++        public static void infoUser() {
++
++        }
++
++        public static void delUser() {
++            if (CTOS_Console.CTOSmain.rights == 3) {
++                Console.Write("Benutzer : ");
++                string a1 = Console.ReadLine();
++                File.Delete(CTOS_Console.userDB.userFolderPath + "/" + a1 + ".txt");
++                Console.WriteLine("Benutzer " + a1 + " gelöscht");
++            } else {
++                Console.ForegroundColor = ConsoleColor.Red;
++                Console.WriteLine("du benötigst admin rechte um einen benutzter anzulegen");
++                Console.ForegroundColor = ConsoleColor.White;
++                Console.ReadKey();
++            }
++            CTOS_Console.Console.userConsole();
++
++        }
++
++        public static void listCommands() {
++            Console.WriteLine("addUser");
++            Console.WriteLine("editUser");
++            Console.WriteLine("listUser");
++            Console.WriteLine("infoUser");
++            Console.WriteLine("delUser");
++            Console.WriteLine("logout");
++            Console.ReadKey();
++            CTOS_Console.Console.userConsole();
++        }
++
++        public static void logout() {
++            CTOS_Console.CTOSmain.welcome();
++        }
++
++        //get called when the typer has typed the wrong command
++        public static void wrongCommand() {
++
++        }
++    }
++}
+diff --git a/CMDu/Properties/AssemblyInfo.cs b/CMDu/Properties/AssemblyInfo.cs
+new file mode 100644
+index 0000000..b8e97f8
+--- /dev/null
++++ b/CMDu/Properties/AssemblyInfo.cs
+@@ -0,0 +1,36 @@
++﻿using System.Reflection;
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++
++// Allgemeine Informationen über eine Assembly werden über die folgenden
++// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
++// die einer Assembly zugeordnet sind.
++[assembly: AssemblyTitle("CMDu")]
++[assembly: AssemblyDescription("")]
++[assembly: AssemblyConfiguration("")]
++[assembly: AssemblyCompany("")]
++[assembly: AssemblyProduct("CMDu")]
++[assembly: AssemblyCopyright("Copyright ©  2018")]
++[assembly: AssemblyTrademark("")]
++[assembly: AssemblyCulture("")]
++
++// Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
++// für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von
++// COM aus zugreifen müssen, sollten Sie das ComVisible-Attribut für diesen Typ auf "True" festlegen.
++[assembly: ComVisible(false)]
++
++// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
++[assembly: Guid("d7d87105-a7bf-4ae6-83d2-c98baee3f4bf")]
++
++// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
++//
++//      Hauptversion
++//      Nebenversion
++//      Buildnummer
++//      Revision
++//
++// Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
++// indem Sie "*" wie unten gezeigt eingeben:
++// [assembly: AssemblyVersion("1.0.*")]
++[assembly: AssemblyVersion("1.0.0.0")]
++[assembly: AssemblyFileVersion("1.0.0.0")]
+diff --git a/CMDu/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/CMDu/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDu/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/CMDu/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDu/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/CMDu/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CMDu/obj/Release/build.force b/CMDu/obj/Release/build.force
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console.sln b/CTOS_console.sln
+new file mode 100644
+index 0000000..7237647
+--- /dev/null
++++ b/CTOS_console.sln
+@@ -0,0 +1,41 @@
++﻿
++Microsoft Visual Studio Solution File, Format Version 12.00
++# Visual Studio 15
++VisualStudioVersion = 15.0.27130.2024
++MinimumVisualStudioVersion = 10.0.40219.1
++Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTOS_console", "CTOS_console\CTOS_console.csproj", "{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}"
++EndProject
++Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "waitLib", "waitLib\waitLib.csproj", "{B6F0B2A2-E947-4066-9668-53804ED76BBA}"
++EndProject
++Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{AF36556E-D3F6-4F62-9ACB-86982729FA01}"
++EndProject
++Global
++	GlobalSection(SolutionConfigurationPlatforms) = preSolution
++		Debug|Any CPU = Debug|Any CPU
++		normal|Any CPU = normal|Any CPU
++		Release|Any CPU = Release|Any CPU
++	EndGlobalSection
++	GlobalSection(ProjectConfigurationPlatforms) = postSolution
++		{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
++		{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
++		{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}.normal|Any CPU.ActiveCfg = normal|Any CPU
++		{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}.normal|Any CPU.Build.0 = normal|Any CPU
++		{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
++		{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}.Release|Any CPU.Build.0 = Release|Any CPU
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA}.normal|Any CPU.ActiveCfg = Release|Any CPU
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA}.normal|Any CPU.Build.0 = Release|Any CPU
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA}.Release|Any CPU.Build.0 = Release|Any CPU
++	EndGlobalSection
++	GlobalSection(SolutionProperties) = preSolution
++		HideSolutionNode = FALSE
++	EndGlobalSection
++	GlobalSection(NestedProjects) = preSolution
++		{B6F0B2A2-E947-4066-9668-53804ED76BBA} = {AF36556E-D3F6-4F62-9ACB-86982729FA01}
++	EndGlobalSection
++	GlobalSection(ExtensibilityGlobals) = postSolution
++		SolutionGuid = {F78BFFE5-D95B-4F5A-826E-A3E6276F00F1}
++	EndGlobalSection
++EndGlobal
+diff --git a/CTOS_console/App.config b/CTOS_console/App.config
+new file mode 100644
+index 0000000..bae5d6d
+--- /dev/null
++++ b/CTOS_console/App.config
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<configuration>
++    <startup> 
++        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1"/>
++    </startup>
++</configuration>
+diff --git a/CTOS_console/CTOS.cs b/CTOS_console/CTOS.cs
+new file mode 100644
+index 0000000..357bfc6
+--- /dev/null
++++ b/CTOS_console/CTOS.cs
+@@ -0,0 +1,111 @@
++﻿using System;
++using System.IO;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++using WaitLib;
++
++
++namespace CTOS_Console {
++    public class CTOSmain {
++
++        public static bool hacker_isInside = false;
++        public static string userNameIn;
++        public static string userPasswordIn;
++        public static string filename;
++
++        //Main function
++        public static void Main() {
++            welcome();
++        }
++
++        //"homescreen"
++        public static void welcome() {
++            Console.ForegroundColor = ConsoleColor.Cyan;
++
++            Console.WriteLine("---------------------------------------");
++            Console.WriteLine("hallo und herzlich willkommen zu");
++            Console.WriteLine("---------------------------------------");
++            Console.WriteLine("@@@@@ @@@@@@@ @@@@@@ @@@@@@");
++            Console.WriteLine("@        @    @    @ @     ");
++            Console.WriteLine("@        @    @    @ @@@@@@");
++            Console.WriteLine("@        @    @    @      @");
++            Console.WriteLine("@@@@@    @    @@@@@@ @@@@@@");
++            Console.WriteLine();
++
++            Console.ForegroundColor = ConsoleColor.White;
++            Console.WriteLine("Anmeldung");
++            Console.WriteLine();
++
++            Console.Write("Benutzernamen: ");
++            userNameIn = Console.ReadLine();
++            Console.Write("Passwort: ");
++            userPasswordIn = Console.ReadLine();
++            login();
++        }
++
++        //login
++        public static void login() {
++            if (File.Exists(UserDB.userFolderPath + "/" + getFilename())) {
++                UserDB.read();
++                if (userNameIn.Equals(UserDB.name)) {
++                    if (userPasswordIn.Equals(UserDB.password)) {
++                        if (userNameIn.Equals("h4ck3r"))
++                        {
++                            Console.WriteLine("hacker angemeldet");
++                            Console.Clear();
++                            MainConsole.hackerConsole();
++                        } else if (userNameIn.Equals("admin")) {
++                            MainConsole.userConsole();
++                        } else {
++                            Console.WriteLine("erfolgreich");
++                            Console.Clear();
++                            MainConsole.userConsole();
++                        }
++                    } else {
++                        Console.ForegroundColor = ConsoleColor.Red;
++                        Console.WriteLine("falsches passwort");
++                        Console.ForegroundColor = ConsoleColor.White;
++                        Console.WriteLine("drücke enter um es nochmal zu versuchen");
++                        Console.ReadKey();
++                        restart();
++                    }
++                } else {
++                    errorAcc();
++                }
++            } else {
++                errorAcc();
++            }
++            restart();
++        }
++
++        //logout
++        public static void logout() {
++            Wait.waitSec(4);
++            Environment.Exit(0);
++        }
++
++        //restart the Console
++        public static void restart() {
++            Console.Clear();
++            Main();
++        }
++
++        //put out the correct filename
++        public static string getFilename() {
++            filename = userNameIn + ".txt";
++            return filename;
++        }
++
++        public static void errorAcc() {
++            Console.ForegroundColor = ConsoleColor.Red;
++            Console.WriteLine("sie haben kein akkount. Bitte wenden sie sich an den admin.");
++            Console.ForegroundColor = ConsoleColor.White;
++            if (!(File.Exists(UserDB.fileFolderPath + "/file.txt"))) { UserDB.read(); }
++            Console.WriteLine("drücke enter um es nochmal zu versuchen");
++            Console.ReadKey();
++            restart();
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/CTOS_console/CTOS_console.csproj b/CTOS_console/CTOS_console.csproj
+new file mode 100644
+index 0000000..cbc3057
+--- /dev/null
++++ b/CTOS_console/CTOS_console.csproj
+@@ -0,0 +1,76 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
++  <PropertyGroup>
++    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
++    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
++    <ProjectGuid>{7A88B142-9F0A-4ACA-AC11-98AD89D7BDD9}</ProjectGuid>
++    <OutputType>Exe</OutputType>
++    <AppDesignerFolder>Properties</AppDesignerFolder>
++    <RootNamespace>CTOS_console</RootNamespace>
++    <AssemblyName>CTOS_console</AssemblyName>
++    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
++    <FileAlignment>512</FileAlignment>
++    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
++    <TargetFrameworkProfile />
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
++    <PlatformTarget>AnyCPU</PlatformTarget>
++    <DebugSymbols>true</DebugSymbols>
++    <DebugType>full</DebugType>
++    <Optimize>false</Optimize>
++    <OutputPath>bin\Debug\</OutputPath>
++    <DefineConstants>DEBUG;TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
++    <PlatformTarget>AnyCPU</PlatformTarget>
++    <DebugType>pdbonly</DebugType>
++    <Optimize>true</Optimize>
++    <OutputPath>bin\Release\</OutputPath>
++    <DefineConstants>TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'normal|AnyCPU'">
++    <OutputPath>bin\normal\</OutputPath>
++  </PropertyGroup>
++  <ItemGroup>
++    <Reference Include="System" />
++    <Reference Include="System.Core" />
++    <Reference Include="System.Drawing" />
++    <Reference Include="System.Windows.Forms" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Data.DataSetExtensions" />
++    <Reference Include="Microsoft.CSharp" />
++    <Reference Include="System.Data" />
++    <Reference Include="System.Net.Http" />
++    <Reference Include="System.Xml" />
++  </ItemGroup>
++  <ItemGroup>
++    <Compile Include="CommandsHacker.cs" />
++    <Compile Include="CommandsUser.cs" />
++    <Compile Include="CTOS.cs" />
++    <Compile Include="MainConsole.cs" />
++    <Compile Include="Properties\AssemblyInfo.cs" />
++    <Compile Include="UserDB.cs" />
++  </ItemGroup>
++  <ItemGroup>
++    <None Include="App.config" />
++  </ItemGroup>
++  <ItemGroup>
++    <ProjectReference Include="..\waitLib\waitLib.csproj">
++      <Project>{b6f0b2a2-e947-4066-9668-53804ed76bba}</Project>
++      <Name>waitLib</Name>
++    </ProjectReference>
++  </ItemGroup>
++  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
++  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
++       Other similar extension points exist, see Microsoft.Common.targets.
++  <Target Name="BeforeBuild">
++  </Target>
++  <Target Name="AfterBuild">
++  </Target>
++  -->
++</Project>
+\ No newline at end of file
+diff --git a/CTOS_console/CommandsHacker.cs b/CTOS_console/CommandsHacker.cs
+new file mode 100644
+index 0000000..86eb158
+--- /dev/null
++++ b/CTOS_console/CommandsHacker.cs
+@@ -0,0 +1,238 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++using WaitLib;
++
++
++namespace CTOS_Console {
++    public class CommandsHacker {
++
++
++
++        //command parameter
++
++        private static bool knowIP = false;
++        private static string IP;
++        private static bool knowPS = false;
++        private static bool isConnectedClient = false;
++        private static bool isConnectedServer = false;
++        private static bool isConnectedMobilephone = false;
++        private static bool isConnectedInternet = false;
++        private static bool isConnectedGoogle = false;
++        private static bool AntiVirus = false;
++        private static bool firewall = false;
++        private static bool Backdoor = false;
++        private static bool ini = false;
++
++        private static string[] hackerCommands = { /*0*/"listCommands", /*1*/"logout", /*2*/"startHackSoftware", /*3*/"getPassword",
++            /*4*/"install_Backdoor", /*5*/"install_Virus", /*6*/"getBankAccounts", /*7*/"download_data", /*8*/"descript_data",
++            /*9*/"hack_ip", /*10*/"hack_Blackout", /*11*/"hack_Server", /*12*/"hack_Moilephone", /*13*/"hack_firewall",
++            /*14*/"hack_antivirus", /*15*/"connect_client", /*16*/"connect_server", /*17*/"connect_mobilephone",
++            /*18*/"connect_internet", /*19*/"connect_google", /*20*/"disconnect_client", /*21*/"disconnect_server",
++            /*22*/"disconnect_mobilephone", /*23*/"disconnect_internet", /*24*/"disconnect_google" };
++
++        //Standard commands)
++
++        public static void listCommands() {
++            for (int i = 0; i < hackerCommands.Length; i++) {
++                if (i == 0 || i == 1 || i == 2 || i == 3 || i == 9 || i == 18) {
++                    Console.ForegroundColor = ConsoleColor.Green;
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Yellow;
++                }
++                Console.WriteLine(hackerCommands[i]);
++
++            }
++            Console.ForegroundColor = ConsoleColor.White;
++        }
++
++        public static void logout() {
++            CTOS_Console.MainConsole.logout = true;
++            Console.Clear();
++            CTOSmain.welcome();
++        }
++
++        //hacker commands
++
++        public static void startHackSoftware() {
++
++            Random rnd = new Random();
++
++            for (int i = 0; i < rnd.Next(6, 20); i++) {
++                Console.Write(".");
++                Wait.waitSec(1);
++            }
++
++            ini = true;
++            Console.WriteLine("hackSW wurde Initialisiert");
++            MainConsole.hackerConsole();
++        }
++
++        public static void getPassword() {
++
++            Random rnd = new Random();
++
++            if (ini) {
++                if (knowIP && isConnectedClient && isConnectedInternet || knowIP && isConnectedGoogle && isConnectedInternet || knowIP && isConnectedMobilephone && isConnectedInternet || knowIP && isConnectedServer && isConnectedInternet) {
++                    Console.WriteLine("Get component... Please wait");
++
++                    for (int i = 0; i < rnd.Next(30, 100); i++) {
++                        Console.Write(".");
++                        Wait.waitMilsec(rnd.Next(100, 2000));
++                    }
++
++                    Console.WriteLine("Component downloaded");
++                    Wait.waitSec(2);
++                    Console.WriteLine("Search crack server...");
++
++                    for (int i = 0; i < rnd.Next(30, 1000); i++) {
++                        Console.Write(".");
++                        Wait.waitMilsec(rnd.Next(100, 2000));
++                    }
++
++                    Console.WriteLine("Crack server found");
++                    Wait.waitSec(2);
++                    Console.WriteLine("Search password... Please wait");
++
++                    for (int i = 0; i < rnd.Next(30, 100); i++) {
++                        Console.Write(".");
++                        Wait.waitMilsec(rnd.Next(100, 2000));
++                    }
++
++                    Console.WriteLine("Password found");
++
++                    knowPS = true;
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine("you are not connected");
++                    Console.ForegroundColor = ConsoleColor.White;
++                }
++            }
++        }
++
++        public static void install_Backdoor() {
++
++        }
++
++        public static void install_Virus() {
++
++        }
++
++        public static void getBankAccounts() {
++
++        }
++
++        public static void download_data() {
++
++        }
++
++        public static void descript_data() {
++
++        }
++
++        public static void hack_ip() {
++            if (ini) {
++                Console.Write("IP: ");
++                IP = Console.ReadLine();
++                Console.WriteLine("got ip");
++                knowIP = true;
++            }
++        }
++
++        public static void hack_Blackout() {
++
++        }
++
++        public static void hack_Server() {
++
++        }
++
++        public static void hack_Moilephone() {
++
++        }
++
++        public static void hack_firewall() {
++
++        }
++
++        public static void hack_antivirus() {
++
++        }
++
++        public static void connect_client() {
++            if (knowIP) {
++
++            }
++        }
++
++        public static void connect_server() {
++
++        }
++
++        public static void connect_mobilephone() {
++
++        }
++
++        public static void connect_internet() {
++            Random rnd = new Random();
++
++            Console.Write("Connecting to Internet");
++
++            do {
++                for (int i = 0; i < rnd.Next(30, 100); i++) {
++                    Console.Write(".");
++                    Wait.waitMilsec(rnd.Next(100, 2000));
++                }
++            } while (!connect_failure(1, 100, 50));
++
++            Console.WriteLine();
++            isConnectedInternet = true;
++            Console.WriteLine("Connected to Internet");
++        }
++
++        public static void connect_google() {
++
++        }
++
++        public static void disconnect_ip() {
++
++        }
++
++        public static void disconnect_client() {
++
++        }
++
++        public static void disconnect_server() {
++
++        }
++
++        public static void disconnect_mobilephone() {
++
++        }
++
++        public static void disconnect_internet() {
++
++        }
++
++        public static void disconnect_google() {
++
++        }
++
++        public static void wrongCommand() {
++
++        }
++
++        public static bool connect_failure(int min, int max, int c) {
++            Random rnd = new Random();
++            int randomInt = rnd.Next(min, max);
++            if (randomInt <= c) {
++                return false;
++            } else {
++                return true;
++            }
++        }
++
++    }
++}
+diff --git a/CTOS_console/CommandsUser.cs b/CTOS_console/CommandsUser.cs
+new file mode 100644
+index 0000000..1d6cb30
+--- /dev/null
++++ b/CTOS_console/CommandsUser.cs
+@@ -0,0 +1,142 @@
++﻿using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++namespace CTOS_Console {
++    public class CommandsUser {
++        public static string line;
++        public static int counter = 0;
++
++        public static void addUser() {
++            if (UserDB.rights == 3) {
++
++                Console.WriteLine("Gebe einen Benutzernamen an");
++                string nameCreateUser = Console.ReadLine();
++
++                if (!(File.Exists(CTOS_Console.UserDB.userFolderPath + "/" + nameCreateUser + ".txt"))) {
++
++                    FileStream addUserFileStream = new FileStream(CTOS_Console.UserDB.userFolderPath + "/" + nameCreateUser + ".txt", FileMode.Create);
++                    StreamWriter addUserStreamWriter = new StreamWriter(addUserFileStream);
++
++                    Console.Write("Gebe ein passwort an: ");
++                    string passwordCreateUser = Console.ReadLine();
++                    Console.Write("Gebe die rechts stufe an(1, 2, 3): ");
++                    string rightsCreateUser = Console.ReadLine();
++
++                    string[] linesUserCreate = { nameCreateUser, passwordCreateUser, rightsCreateUser };
++
++                    addUserStreamWriter.WriteLine(linesUserCreate[0]);
++                    addUserStreamWriter.WriteLine(linesUserCreate[1]);
++                    addUserStreamWriter.WriteLine(linesUserCreate[2]);
++                    addUserStreamWriter.Close();
++                    addUserFileStream.Close();
++                    CTOS_Console.MainConsole.userConsole();
++
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine("Dieser Benutzer exestiert schon, melden sie sich an oder nehmen einen anderen benutzernamen");
++                    Console.ForegroundColor = ConsoleColor.White;
++                    Console.ReadKey();
++                    CTOS_Console.MainConsole.userConsole();
++                }
++            } else {
++                Console.ForegroundColor = ConsoleColor.Red;
++                Console.WriteLine("du benötigst admin rechte um einen benutzter anzulegen");
++                Console.ForegroundColor = ConsoleColor.White;
++                Console.ReadKey();
++                CTOS_Console.MainConsole.userConsole();
++            }
++
++        }
++
++        public static void editUser() {
++            //eingelesen = 1 // ändern = 2
++            string a1 = "";
++            string a2 = "", b2 = "";
++            int c2 = 0;
++
++            Console.Write("Benutzername : ");
++            a1 = Console.ReadLine();
++
++            if (CTOS_Console.UserDB.rights >= 3) {
++                if (File.Exists(CTOS_Console.UserDB.userFolderPath + "/" + a1 + ".txt")) {
++                    StreamReader editUserStreamReader = new StreamReader(CTOS_Console.UserDB.userFolderPath + "/" + a1 + ".txt");
++                    while ((line = editUserStreamReader.ReadLine()) != null) {
++                        if (counter == 0) {
++                            a2 = line;
++                        } else if (counter == 1) {
++                            b2 = line;
++                        } else if (counter == 2) {
++                            c2 = Int32.Parse(line);
++                        }
++                        counter++;
++                    }
++                    Console.WriteLine(a2);
++                    Console.WriteLine(b2);
++                    Console.WriteLine(c2);
++                    Console.ReadKey();
++                    CTOS_Console.MainConsole.userConsole();
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine("Dieser Benutzer exestiert nicht");
++                    Console.ForegroundColor = ConsoleColor.White;
++                    Console.ReadKey();
++                    CTOS_Console.MainConsole.userConsole();
++                }
++            } else {
++                Console.ForegroundColor = ConsoleColor.Red;
++                Console.WriteLine("du benötigst admin rechte um einen benutzter anzulegen");
++                Console.ForegroundColor = ConsoleColor.White;
++                Console.ReadKey();
++                CTOS_Console.MainConsole.userConsole();
++            }
++        }
++
++        public static void listUser() {
++
++        }
++
++        public static void infoUser() {
++
++        }
++
++        public static void delUser() {
++            if (CTOS_Console.UserDB.rights == 3) {
++                Console.Write("Benutzer : ");
++                string a1 = Console.ReadLine();
++                File.Delete(CTOS_Console.UserDB.userFolderPath + "/" + a1 + ".txt");
++                Console.WriteLine("Benutzer " + a1 + " gelöscht");
++            } else {
++                Console.ForegroundColor = ConsoleColor.Red;
++                Console.WriteLine("du benötigst admin rechte um einen benutzter anzulegen");
++                Console.ForegroundColor = ConsoleColor.White;
++                Console.ReadKey();
++            }
++            CTOS_Console.MainConsole.userConsole();
++
++        }
++
++        public static void listCommands() {
++            Console.WriteLine("addUser");
++            Console.WriteLine("editUser");
++            Console.WriteLine("listUser");
++            Console.WriteLine("infoUser");
++            Console.WriteLine("delUser");
++            Console.WriteLine("logout");
++            Console.ReadKey();
++            CTOS_Console.MainConsole.userConsole();
++        }
++
++        public static void logout() {
++            CTOS_Console.CTOSmain.welcome();
++        }
++
++        //get called when the typer has typed the wrong command
++        public static void wrongCommand() {
++
++        }
++    }
++}
+diff --git a/CTOS_console/MainConsole.cs b/CTOS_console/MainConsole.cs
+new file mode 100644
+index 0000000..c458489
+--- /dev/null
++++ b/CTOS_console/MainConsole.cs
+@@ -0,0 +1,167 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++using CTOS_Console;
++using WaitLib;
++
++namespace CTOS_Console {
++    public class MainConsole {
++        public static bool logout = false;
++        public static bool controlHackerStartConsole = true;
++        public static int i = 1;
++
++        //Main User/Admin Console
++        public static void userConsole() {
++            Console.Clear();
++            if (i == 1) {
++                Console.WriteLine("an der user Console registriert");
++                i++;
++            }
++            if (CTOS_Console.CTOSmain.userNameIn.Equals("admin") && i == 2) {
++                Console.WriteLine(">admin rights");
++                i++;
++            }
++            Console.Write(">");
++            string command = Console.ReadLine();
++            if (command.Equals("addUser")) {
++                CommandsUser.addUser();
++            } else if (command.Equals("editUser")) {
++                CommandsUser.editUser();
++            } else if (command.Equals("listCommands")) {
++                CommandsUser.listCommands();
++            } else if (command.Equals("delUser")) {
++                CommandsUser.delUser();
++            } else if (command.Equals("logout")) {
++                CommandsUser.logout();
++            } else {
++                Console.WriteLine("Unbekannter Befehl");
++                Wait.waitSec(3);
++                userConsole();
++            }
++        }
++
++        //the Hacker Console
++        public static void hackerConsole() {
++            do {
++                if (controlHackerStartConsole) {
++                    controlHackerStartConsole = false;
++                    Console.WriteLine("an der hacker Console registriert");
++                }
++                Console.Write(">");
++                switch (Console.ReadLine()) {
++                    default: {
++                        CommandsHacker.wrongCommand();
++                    }
++                    break;
++                    case "listCommands": {
++                        CommandsHacker.listCommands();
++                    }
++                    break;
++                    case "getPassword": {
++                        CommandsHacker.getPassword();
++                    }
++                    break;
++                    case "install_Backdoor": {
++                        CommandsHacker.install_Backdoor();
++                    }
++                    break;
++                    case "install_Virus": {
++                        CommandsHacker.install_Virus();
++                    }
++                    break;
++                    case "getBankAccounts": {
++                        CommandsHacker.getBankAccounts();
++                    }
++                    break;
++                    case "download_data": {
++                        CommandsHacker.download_data();
++                    }
++                    break;
++                    case "descript_data": {
++                        CommandsHacker.descript_data();
++                    }
++                    break;
++                    case "hack_ip": {
++                        CommandsHacker.hack_ip();
++                    }
++                    break;
++                    case "hack_Blackout": {
++                        CommandsHacker.hack_Blackout();
++                    }
++                    break;
++                    case "hack_Server": {
++                        CommandsHacker.hack_Blackout();
++                    }
++                    break;
++                    case "hack_Moilephone": {
++                        CommandsHacker.hack_Moilephone();
++                    }
++                    break;
++                    case "hack_firewall": {
++                        CommandsHacker.hack_firewall();
++                    }
++                    break;
++                    case "hack_antivirus": {
++                        CommandsHacker.hack_antivirus();
++                    }
++                    break;
++                    case "connect_client": {
++                        CommandsHacker.connect_client();
++                    }
++                    break;
++                    case "connect_server": {
++                        CommandsHacker.connect_server();
++                    }
++                    break;
++                    case "connect_mobilephone": {
++                        CommandsHacker.connect_mobilephone();
++                    }
++                    break;
++                    case "connect_internet": {
++                        CommandsHacker.connect_internet();
++                    }
++                    break;
++                    case "connect_google": {
++                        CommandsHacker.connect_google();
++                    }
++                    break;
++                    case "disconnect_ip": {
++                        CommandsHacker.disconnect_ip();
++                    }
++                    break;
++                    case "disconnect_client": {
++                        CommandsHacker.disconnect_client();
++                    }
++                    break;
++                    case "disconnect_server": {
++                        CommandsHacker.disconnect_server();
++                    }
++                    break;
++                    case "disconnect_mobilephone": {
++                        CommandsHacker.disconnect_server();
++                    }
++                    break;
++                    case "disconnect_internet": {
++                        CommandsHacker.disconnect_internet();
++                    }
++                    break;
++                    case "disconnect_google": {
++                        CommandsHacker.disconnect_google();
++                    }
++                    break;
++                    case "logout": {
++                        CommandsHacker.logout();
++                    }
++                    break;
++                    case "startHackSoftware": {
++                        CommandsHacker.startHackSoftware();
++                    }
++                    break;
++                }
++            } while (!logout);
++            CTOS_Console.CTOSmain.logout();
++        }
++    }
++}
+diff --git a/CTOS_console/Properties/AssemblyInfo.cs b/CTOS_console/Properties/AssemblyInfo.cs
+new file mode 100644
+index 0000000..b910e22
+--- /dev/null
++++ b/CTOS_console/Properties/AssemblyInfo.cs
+@@ -0,0 +1,36 @@
++﻿using System.Reflection;
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++
++// General Information about an assembly is controlled through the following 
++// set of attributes. Change these attribute values to modify the information
++// associated with an assembly.
++[assembly: AssemblyTitle("CTOS_Console")]
++[assembly: AssemblyDescription("")]
++[assembly: AssemblyConfiguration("")]
++[assembly: AssemblyCompany("Microsoft")]
++[assembly: AssemblyProduct("CTOS_Console")]
++[assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
++[assembly: AssemblyTrademark("")]
++[assembly: AssemblyCulture("")]
++
++// Setting ComVisible to false makes the types in this assembly not visible 
++// to COM components.  If you need to access a type in this assembly from 
++// COM, set the ComVisible attribute to true on that type.
++[assembly: ComVisible(false)]
++
++// The following GUID is for the ID of the typelib if this project is exposed to COM
++[assembly: Guid("7a88b142-9f0a-4aca-ac11-98ad89d7bdd9")]
++
++// Version information for an assembly consists of the following four values:
++//
++//      Major Version
++//      Minor Version 
++//      Build Number
++//      Revision
++//
++// You can specify all the values or you can default the Build and Revision Numbers 
++// by using the '*' as shown below:
++// [assembly: AssemblyVersion("1.0.*")]
++[assembly: AssemblyVersion("1.0.0.0")]
++[assembly: AssemblyFileVersion("1.0.0.0")]
+diff --git a/CTOS_console/UserDB.cs b/CTOS_console/UserDB.cs
+new file mode 100644
+index 0000000..5561a2f
+--- /dev/null
++++ b/CTOS_console/UserDB.cs
+@@ -0,0 +1,91 @@
++﻿using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++using WaitLib;
++
++namespace CTOS_Console {
++    public class UserDB {
++        public static string name;
++        public static string password;
++        public static int rights;
++        public static string line;
++        public static int counter = 0;
++        public static string fileFolderPath = "C:/Users/" + currentUser() + "/Documents/CTOS";
++        public static string userFolderPath = "C:/Users/" + currentUser() + "/Documents/CTOS/user";
++        public static string[] linesUser = { "admin", "Asus1234", "3" };
++        public static string[] lineFile = { userFolderPath };
++        public static string[] lineHacker = { "h4ck3r", "hackmeifyoucan", "4" };
++        public static string currentUserName;
++
++        public static void creatFile() {
++
++            Console.WriteLine(currentUser());
++            Wait.waitSec(1);
++            Console.WriteLine(fileFolderPath);
++            Wait.waitSec(1);
++
++            System.IO.Directory.CreateDirectory(fileFolderPath);
++            Wait.waitSec(2);
++            File.Create(fileFolderPath + "/file.txt");
++
++            Wait.waitSec(2);
++            Console.WriteLine(userFolderPath);
++            Wait.waitSec(2);
++
++            System.IO.Directory.CreateDirectory(userFolderPath);
++            Wait.waitSec(2);
++            File.Create(userFolderPath + "/admin.txt");
++            Wait.waitSec(2);
++            System.IO.File.WriteAllLines(userFolderPath + "/admin.txt", linesUser);
++            Wait.waitSec(2);
++
++            Console.WriteLine(userFolderPath);
++            System.IO.Directory.CreateDirectory(userFolderPath);
++            Wait.waitSec(2);
++            File.Create(userFolderPath + "/h4ck3r.txt");
++            Wait.waitSec(2);
++            System.IO.File.WriteAllLines(userFolderPath + "/h4ck3r.txt", lineHacker);
++            Wait.waitSec(2);
++
++            System.IO.File.WriteAllLines(fileFolderPath + "/file.txt", lineFile);
++            Wait.waitSec(2);
++            Console.ForegroundColor = ConsoleColor.Red;
++            Console.WriteLine("Please restart the programm!");
++            Console.ForegroundColor = ConsoleColor.White;
++            Wait.waitSec(5);
++            Environment.Exit(0);
++
++        }
++
++        public static void read() {
++            if (File.Exists(fileFolderPath + "/file.txt")) {
++                System.IO.StreamReader fileFileRead = new System.IO.StreamReader(fileFolderPath + "/file.txt");
++                userFolderPath = fileFileRead.ReadLine();
++
++                System.IO.StreamReader userFileRead = new System.IO.StreamReader(userFolderPath + "/" + CTOS_Console.CTOSmain.getFilename());
++
++                while ((line = userFileRead.ReadLine()) != null) {
++                    if (counter == 0) {
++                        name = line;
++                    } else if (counter == 1) {
++                        password = line;
++                    } else if (counter == 2) {
++                        rights = Int32.Parse(line);
++                    }
++                    counter++;
++                }
++                userFileRead.Close();
++                fileFileRead.Close();
++            } else {
++                creatFile();
++            }
++        }
++        public static string currentUser() {
++            currentUserName = System.Environment.UserName;
++            return currentUserName;
++        }
++    }
++}
+diff --git a/CTOS_console/bat/dir/dir_blue.bat b/CTOS_console/bat/dir/dir_blue.bat
+new file mode 100644
+index 0000000..1e684b2
+--- /dev/null
++++ b/CTOS_console/bat/dir/dir_blue.bat
+@@ -0,0 +1,5 @@
++@echo off
++color b
++cd C:\Users\nexus\Documents
++dir /s
++exit
+\ No newline at end of file
+diff --git a/CTOS_console/bat/dir/dir_red.bat b/CTOS_console/bat/dir/dir_red.bat
+new file mode 100644
+index 0000000..b772a6f
+--- /dev/null
++++ b/CTOS_console/bat/dir/dir_red.bat
+@@ -0,0 +1,5 @@
++@echo off
++color c
++cd C:\Users\nexus\Documents
++dir /s
++exit
+diff --git a/CTOS_console/bat/dir/dir_white.bat b/CTOS_console/bat/dir/dir_white.bat
+new file mode 100644
+index 0000000..25343c7
+--- /dev/null
++++ b/CTOS_console/bat/dir/dir_white.bat
+@@ -0,0 +1,5 @@
++@echo off
++color f
++cd C:\Users\nexus\Documents
++dir /s
++exit
+\ No newline at end of file
+diff --git a/CTOS_console/bat/timout/download.bat b/CTOS_console/bat/timout/download.bat
+new file mode 100644
+index 0000000..83cb140
+--- /dev/null
++++ b/CTOS_console/bat/timout/download.bat
+@@ -0,0 +1 @@
++@echo off
+diff --git a/CTOS_console/bin/Debug/CTOS_console.exe.config b/CTOS_console/bin/Debug/CTOS_console.exe.config
+new file mode 100644
+index 0000000..88fa402
+--- /dev/null
++++ b/CTOS_console/bin/Debug/CTOS_console.exe.config
+@@ -0,0 +1,6 @@
++﻿<?xml version="1.0" encoding="utf-8" ?>
++<configuration>
++    <startup> 
++        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
++    </startup>
++</configuration>
+\ No newline at end of file
+diff --git a/CTOS_console/bin/Debug/CTOS_console.vshost.exe.config b/CTOS_console/bin/Debug/CTOS_console.vshost.exe.config
+new file mode 100644
+index 0000000..88fa402
+--- /dev/null
++++ b/CTOS_console/bin/Debug/CTOS_console.vshost.exe.config
+@@ -0,0 +1,6 @@
++﻿<?xml version="1.0" encoding="utf-8" ?>
++<configuration>
++    <startup> 
++        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
++    </startup>
++</configuration>
+\ No newline at end of file
+diff --git a/CTOS_console/bin/normal/CTOS_console.exe.config b/CTOS_console/bin/normal/CTOS_console.exe.config
+new file mode 100644
+index 0000000..bae5d6d
+--- /dev/null
++++ b/CTOS_console/bin/normal/CTOS_console.exe.config
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<configuration>
++    <startup> 
++        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1"/>
++    </startup>
++</configuration>
+diff --git a/CTOS_console/bin/normal/CTOS_console.vshost.exe.config b/CTOS_console/bin/normal/CTOS_console.vshost.exe.config
+new file mode 100644
+index 0000000..88fa402
+--- /dev/null
++++ b/CTOS_console/bin/normal/CTOS_console.vshost.exe.config
+@@ -0,0 +1,6 @@
++﻿<?xml version="1.0" encoding="utf-8" ?>
++<configuration>
++    <startup> 
++        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
++    </startup>
++</configuration>
+\ No newline at end of file
+diff --git a/CTOS_console/bin/normal/CTOS_console.vshost.exe.manifest b/CTOS_console/bin/normal/CTOS_console.vshost.exe.manifest
+new file mode 100644
+index 0000000..061c9ca
+--- /dev/null
++++ b/CTOS_console/bin/normal/CTOS_console.vshost.exe.manifest
+@@ -0,0 +1,11 @@
++﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
++  <assemblyIdentity version="1.0.0.0" name="MyApplication.app"/>
++  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
++    <security>
++      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
++        <requestedExecutionLevel level="asInvoker" uiAccess="false"/>
++      </requestedPrivileges>
++    </security>
++  </trustInfo>
++</assembly>
+diff --git a/CTOS_console/obj/Debug/CTOS_console.csproj.FileListAbsolute.txt b/CTOS_console/obj/Debug/CTOS_console.csproj.FileListAbsolute.txt
+new file mode 100644
+index 0000000..9e236b2
+--- /dev/null
++++ b/CTOS_console/obj/Debug/CTOS_console.csproj.FileListAbsolute.txt
+@@ -0,0 +1,18 @@
++c:\users\m.friedewald\documents\visual studio 2015\Projects\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe.config
++C:\Users\M.Friedewald\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe
++C:\Users\M.Friedewald\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\bin\Debug\CTOS_console.pdb
++C:\Users\M.Friedewald\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\Debug\CTOS_console.csprojResolveAssemblyReference.cache
++C:\Users\M.Friedewald\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\Debug\CTOS_console.exe
++C:\Users\M.Friedewald\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\Debug\CTOS_console.pdb
++H:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe.config
++H:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.exe
++H:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.pdb
++H:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe
++H:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.pdb
++H:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.csprojResolveAssemblyReference.cache
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe.config
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.exe
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.pdb
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.csprojResolveAssemblyReference.cache
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.pdb
+diff --git a/CTOS_console/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/CTOS_console/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/CTOS_console/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/CTOS_console/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console/obj/normal/CTOS_console.csproj.CopyComplete b/CTOS_console/obj/normal/CTOS_console.csproj.CopyComplete
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console/obj/normal/CTOS_console.csproj.FileListAbsolute.txt b/CTOS_console/obj/normal/CTOS_console.csproj.FileListAbsolute.txt
+new file mode 100644
+index 0000000..a8e7b83
+--- /dev/null
++++ b/CTOS_console/obj/normal/CTOS_console.csproj.FileListAbsolute.txt
+@@ -0,0 +1,33 @@
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe.config
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\normal\CTOS_console.exe
++F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\normal\CTOS_console.csprojResolveAssemblyReference.cache
++C:\Users\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe.config
++C:\Users\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.exe
++C:\Users\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe
++C:\Users\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csprojResolveAssemblyReference.cache
++X:\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe.config
++X:\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe
++X:\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csprojResolveAssemblyReference.cache
++X:\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csproj.CoreCompileInputs.cache
++X:\nexus\Documents\Visual Studio 2015\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.exe
++X:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe.config
++X:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe
++X:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csprojResolveAssemblyReference.cache
++X:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csproj.CoreCompileInputs.cache
++X:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.exe
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe.config
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csproj.CoreCompileInputs.cache
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.exe
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csprojResolveAssemblyReference.cache
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\waitLib.dll
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\waitLib.pdb
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csprojAssemblyReference.cache
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csproj.CoreCompileInputs.cache
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.exe
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe.config
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\CTOS_console.exe
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\waitLib.dll
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\waitLib.pdb
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csproj.CopyComplete
+diff --git a/CTOS_console/obj/normal/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/CTOS_console/obj/normal/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console/obj/normal/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/CTOS_console/obj/normal/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/CTOS_console/obj/normal/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/CTOS_console/obj/normal/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/DB/DB.csproj b/DB/DB.csproj
+new file mode 100644
+index 0000000..dcb7ec3
+--- /dev/null
++++ b/DB/DB.csproj
+@@ -0,0 +1,53 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
++  <PropertyGroup>
++    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
++    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
++    <ProjectGuid>{87511A8D-3818-423B-B399-0EDF0FDF7E5B}</ProjectGuid>
++    <OutputType>Library</OutputType>
++    <AppDesignerFolder>Properties</AppDesignerFolder>
++    <RootNamespace>DB</RootNamespace>
++    <AssemblyName>DB</AssemblyName>
++    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
++    <FileAlignment>512</FileAlignment>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
++    <DebugSymbols>true</DebugSymbols>
++    <DebugType>full</DebugType>
++    <Optimize>false</Optimize>
++    <OutputPath>bin\Debug\</OutputPath>
++    <DefineConstants>DEBUG;TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
++    <DebugType>pdbonly</DebugType>
++    <Optimize>true</Optimize>
++    <OutputPath>bin\Release\</OutputPath>
++    <DefineConstants>TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <ItemGroup>
++    <Reference Include="System" />
++    <Reference Include="System.Core" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Data.DataSetExtensions" />
++    <Reference Include="Microsoft.CSharp" />
++    <Reference Include="System.Data" />
++    <Reference Include="System.Net.Http" />
++    <Reference Include="System.Xml" />
++  </ItemGroup>
++  <ItemGroup>
++    <Compile Include="UserDB.cs" />
++    <Compile Include="Properties\AssemblyInfo.cs" />
++  </ItemGroup>
++  <ItemGroup>
++    <ProjectReference Include="..\waitLib\waitLib.csproj">
++      <Project>{b6f0b2a2-e947-4066-9668-53804ed76bba}</Project>
++      <Name>waitLib</Name>
++    </ProjectReference>
++  </ItemGroup>
++  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
++</Project>
+\ No newline at end of file
+diff --git a/DB/Properties/AssemblyInfo.cs b/DB/Properties/AssemblyInfo.cs
+new file mode 100644
+index 0000000..14bec0a
+--- /dev/null
++++ b/DB/Properties/AssemblyInfo.cs
+@@ -0,0 +1,36 @@
++﻿using System.Reflection;
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++
++// Allgemeine Informationen über eine Assembly werden über die folgenden
++// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
++// die einer Assembly zugeordnet sind.
++[assembly: AssemblyTitle("DB")]
++[assembly: AssemblyDescription("")]
++[assembly: AssemblyConfiguration("")]
++[assembly: AssemblyCompany("")]
++[assembly: AssemblyProduct("DB")]
++[assembly: AssemblyCopyright("Copyright ©  2018")]
++[assembly: AssemblyTrademark("")]
++[assembly: AssemblyCulture("")]
++
++// Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
++// für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von
++// COM aus zugreifen müssen, sollten Sie das ComVisible-Attribut für diesen Typ auf "True" festlegen.
++[assembly: ComVisible(false)]
++
++// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
++[assembly: Guid("87511a8d-3818-423b-b399-0edf0fdf7e5b")]
++
++// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
++//
++//      Hauptversion
++//      Nebenversion
++//      Buildnummer
++//      Revision
++//
++// Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
++// indem Sie "*" wie unten gezeigt eingeben:
++// [assembly: AssemblyVersion("1.0.*")]
++[assembly: AssemblyVersion("1.0.0.0")]
++[assembly: AssemblyFileVersion("1.0.0.0")]
+diff --git a/DB/UserDB.cs b/DB/UserDB.cs
+new file mode 100644
+index 0000000..96728f0
+--- /dev/null
++++ b/DB/UserDB.cs
+@@ -0,0 +1,90 @@
++﻿using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++namespace CTOS_Console {
++    public class UserDB {
++        public static string name;
++        public static string password;
++        public static int rights;
++        public static string line;
++        public static int counter = 0;
++        public static string fileFolderPath = "C:/Users/" + currentUser() + "/Documents/CTOS";
++        public static string userFolderPath = "C:/Users/" + currentUser() + "/Documents/CTOS/user";
++        public static string[] linesUser = { "admin", "Asus1234", "3" };
++        public static string[] lineFile = { userFolderPath };
++        public static string[] lineHacker = { "h4ck3r", "hackmeifyoucan", "4" };
++        public static string currentUserName;
++
++        public static void creatFile() {
++
++            Console.WriteLine(currentUser());
++            CTOS_Console.Wait.waitSec(1);
++            Console.WriteLine(fileFolderPath);
++            CTOS_Console.Wait.waitSec(1);
++
++            System.IO.Directory.CreateDirectory(fileFolderPath);
++            CTOS_Console.Wait.waitSec(2);
++            File.Create(fileFolderPath + "/file.txt");
++
++            CTOS_Console.Wait.waitSec(2);
++            Console.WriteLine(userFolderPath);
++            CTOS_Console.Wait.waitSec(2);
++
++            System.IO.Directory.CreateDirectory(userFolderPath);
++            CTOS_Console.Wait.waitSec(2);
++            File.Create(userFolderPath + "/admin.txt");
++            CTOS_Console.Wait.waitSec(2);
++            System.IO.File.WriteAllLines(userFolderPath + "/admin.txt", linesUser);
++            CTOS_Console.Wait.waitSec(2);
++
++            Console.WriteLine(userFolderPath);
++            System.IO.Directory.CreateDirectory(userFolderPath);
++            CTOS_Console.Wait.waitSec(2);
++            File.Create(userFolderPath + "/h4ck3r.txt");
++            CTOS_Console.Wait.waitSec(2);
++            System.IO.File.WriteAllLines(userFolderPath + "/h4ck3r.txt", lineHacker);
++            CTOS_Console.Wait.waitSec(2);
++
++            System.IO.File.WriteAllLines(fileFolderPath + "/file.txt", lineFile);
++            CTOS_Console.Wait.waitSec(2);
++            Console.ForegroundColor = ConsoleColor.Red;
++            Console.WriteLine("Please restart the programm!");
++            Console.ForegroundColor = ConsoleColor.White;
++            CTOS_Console.Wait.waitSec(5);
++            Environment.Exit(0);
++
++        }
++
++        public static void read() {
++            if (File.Exists(fileFolderPath + "/file.txt")) {
++                System.IO.StreamReader fileFileRead = new System.IO.StreamReader(fileFolderPath + "/file.txt");
++                userFolderPath = fileFileRead.ReadLine();
++
++                System.IO.StreamReader userFileRead = new System.IO.StreamReader(userFolderPath + "/" + CTOS_Console.);
++
++                while ((line = userFileRead.ReadLine()) != null) {
++                    if (counter == 0) {
++                        name = line;
++                    } else if (counter == 1) {
++                        password = line;
++                    } else if (counter == 2) {
++                        rights = Int32.Parse(line);
++                    }
++                    counter++;
++                }
++                userFileRead.Close();
++                fileFileRead.Close();
++            } else {
++                creatFile();
++            }
++        }
++        public static string currentUser() {
++            currentUserName = System.Environment.UserName;
++            return currentUserName;
++        }
++    }
++}
+diff --git a/DB/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/DB/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/DB/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/DB/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/DB/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/DB/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/DB/obj/Release/build.force b/DB/obj/Release/build.force
+new file mode 100644
+index 0000000..e69de29
+diff --git a/cnsl/MainConsole.cs b/cnsl/MainConsole.cs
+new file mode 100644
+index 0000000..cbadc3f
+--- /dev/null
++++ b/cnsl/MainConsole.cs
+@@ -0,0 +1,166 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++using CTOS_Console;
++
++namespace CTOS_Console {
++    public class MainConsole {
++        public static bool logout = false;
++        public static bool controlHackerStartConsole = true;
++        public static int i = 1;
++
++        //Main User/Admin Console
++        public static void userConsole() {
++            Console.Clear();
++            if (i == 1) {
++                Console.WriteLine("an der user Console registriert");
++                i++;
++            }
++            if (CTOS_Console.Equals("admin") && i == 2) {
++                Console.WriteLine(">admin rights");
++                i++;
++            }
++            Console.Write(">");
++            string command = Console.ReadLine();
++            if (command.Equals("addUser")) {
++                CommandsUser.addUser();
++            } else if (command.Equals("editUser")) {
++                CommandsUser.editUser();
++            } else if (command.Equals("listCommands")) {
++                CommandsUser.listCommands();
++            } else if (command.Equals("delUser")) {
++                CommandsUser.delUser();
++            } else if (command.Equals("logout")) {
++                CommandsUser.logout();
++            } else {
++                Console.WriteLine("Unbekannter Befehl");
++                Wait.waitSec(3);
++                userConsole();
++            }
++        }
++
++        //the Hacker Console
++        public static void hackerConsole() {
++            do {
++                if (controlHackerStartConsole) {
++                    controlHackerStartConsole = false;
++                    Console.WriteLine("an der hacker Console registriert");
++                }
++                Console.Write(">");
++                switch (Console.ReadLine()) {
++                    default: {
++                        CommandsHacker.wrongCommand();
++                    }
++                    break;
++                    case "listCommands": {
++                        CommandsHacker.listCommands();
++                    }
++                    break;
++                    case "getPassword": {
++                        CommandsHacker.getPassword();
++                    }
++                    break;
++                    case "install_Backdoor": {
++                        CommandsHacker.install_Backdoor();
++                    }
++                    break;
++                    case "install_Virus": {
++                        CommandsHacker.install_Virus();
++                    }
++                    break;
++                    case "getBankAccounts": {
++                        CommandsHacker.getBankAccounts();
++                    }
++                    break;
++                    case "download_data": {
++                        CommandsHacker.download_data();
++                    }
++                    break;
++                    case "descript_data": {
++                        CommandsHacker.descript_data();
++                    }
++                    break;
++                    case "hack_ip": {
++                        CommandsHacker.hack_ip();
++                    }
++                    break;
++                    case "hack_Blackout": {
++                        CommandsHacker.hack_Blackout();
++                    }
++                    break;
++                    case "hack_Server": {
++                        CommandsHacker.hack_Blackout();
++                    }
++                    break;
++                    case "hack_Moilephone": {
++                        CommandsHacker.hack_Moilephone();
++                    }
++                    break;
++                    case "hack_firewall": {
++                        CommandsHacker.hack_firewall();
++                    }
++                    break;
++                    case "hack_antivirus": {
++                        CommandsHacker.hack_antivirus();
++                    }
++                    break;
++                    case "connect_client": {
++                        CommandsHacker.connect_client();
++                    }
++                    break;
++                    case "connect_server": {
++                        CommandsHacker.connect_server();
++                    }
++                    break;
++                    case "connect_mobilephone": {
++                        CommandsHacker.connect_mobilephone();
++                    }
++                    break;
++                    case "connect_internet": {
++                        CommandsHacker.connect_internet();
++                    }
++                    break;
++                    case "connect_google": {
++                        CommandsHacker.connect_google();
++                    }
++                    break;
++                    case "disconnect_ip": {
++                        CommandsHacker.disconnect_ip();
++                    }
++                    break;
++                    case "disconnect_client": {
++                        CommandsHacker.disconnect_client();
++                    }
++                    break;
++                    case "disconnect_server": {
++                        CommandsHacker.disconnect_server();
++                    }
++                    break;
++                    case "disconnect_mobilephone": {
++                        CommandsHacker.disconnect_server();
++                    }
++                    break;
++                    case "disconnect_internet": {
++                        CommandsHacker.disconnect_internet();
++                    }
++                    break;
++                    case "disconnect_google": {
++                        CommandsHacker.disconnect_google();
++                    }
++                    break;
++                    case "logout": {
++                        CommandsHacker.logout();
++                    }
++                    break;
++                    case "startHackSoftware": {
++                        CommandsHacker.startHackSoftware();
++                    }
++                    break;
++                }
++            } while (!logout);
++            CTOS_Console.CTOSmain.logout();
++        }
++    }
++}
+diff --git a/cnsl/Properties/AssemblyInfo.cs b/cnsl/Properties/AssemblyInfo.cs
+new file mode 100644
+index 0000000..8c17960
+--- /dev/null
++++ b/cnsl/Properties/AssemblyInfo.cs
+@@ -0,0 +1,36 @@
++﻿using System.Reflection;
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++
++// Allgemeine Informationen über eine Assembly werden über die folgenden
++// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
++// die einer Assembly zugeordnet sind.
++[assembly: AssemblyTitle("cnsl")]
++[assembly: AssemblyDescription("")]
++[assembly: AssemblyConfiguration("")]
++[assembly: AssemblyCompany("")]
++[assembly: AssemblyProduct("cnsl")]
++[assembly: AssemblyCopyright("Copyright ©  2018")]
++[assembly: AssemblyTrademark("")]
++[assembly: AssemblyCulture("")]
++
++// Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
++// für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von
++// COM aus zugreifen müssen, sollten Sie das ComVisible-Attribut für diesen Typ auf "True" festlegen.
++[assembly: ComVisible(false)]
++
++// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
++[assembly: Guid("b3ea24b8-5722-4a10-933c-718a801ff69e")]
++
++// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
++//
++//      Hauptversion
++//      Nebenversion
++//      Buildnummer
++//      Revision
++//
++// Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
++// indem Sie "*" wie unten gezeigt eingeben:
++// [assembly: AssemblyVersion("1.0.*")]
++[assembly: AssemblyVersion("1.0.0.0")]
++[assembly: AssemblyFileVersion("1.0.0.0")]
+diff --git a/cnsl/cnsl.csproj b/cnsl/cnsl.csproj
+new file mode 100644
+index 0000000..f48ba2f
+--- /dev/null
++++ b/cnsl/cnsl.csproj
+@@ -0,0 +1,57 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
++  <PropertyGroup>
++    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
++    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
++    <ProjectGuid>{B3EA24B8-5722-4A10-933C-718A801FF69E}</ProjectGuid>
++    <OutputType>Library</OutputType>
++    <AppDesignerFolder>Properties</AppDesignerFolder>
++    <RootNamespace>cnsl</RootNamespace>
++    <AssemblyName>cnsl</AssemblyName>
++    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
++    <FileAlignment>512</FileAlignment>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
++    <DebugSymbols>true</DebugSymbols>
++    <DebugType>full</DebugType>
++    <Optimize>false</Optimize>
++    <OutputPath>bin\Debug\</OutputPath>
++    <DefineConstants>DEBUG;TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
++    <DebugType>pdbonly</DebugType>
++    <Optimize>true</Optimize>
++    <OutputPath>bin\Release\</OutputPath>
++    <DefineConstants>TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <ItemGroup>
++    <Reference Include="System" />
++    <Reference Include="System.Core" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Data.DataSetExtensions" />
++    <Reference Include="Microsoft.CSharp" />
++    <Reference Include="System.Data" />
++    <Reference Include="System.Net.Http" />
++    <Reference Include="System.Xml" />
++  </ItemGroup>
++  <ItemGroup>
++    <Compile Include="MainConsole.cs" />
++    <Compile Include="Properties\AssemblyInfo.cs" />
++  </ItemGroup>
++  <ItemGroup>
++    <ProjectReference Include="..\CMDh\CMDh.csproj">
++      <Project>{486a8a15-c412-4df2-a0ff-ac68110b423f}</Project>
++      <Name>CMDh</Name>
++    </ProjectReference>
++    <ProjectReference Include="..\CMDu\CMDu.csproj">
++      <Project>{d7d87105-a7bf-4ae6-83d2-c98baee3f4bf}</Project>
++      <Name>CMDu</Name>
++    </ProjectReference>
++  </ItemGroup>
++  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
++</Project>
+\ No newline at end of file
+diff --git a/cnsl/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/cnsl/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/cnsl/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/cnsl/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/cnsl/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/cnsl/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/cnsl/obj/Release/build.force b/cnsl/obj/Release/build.force
+new file mode 100644
+index 0000000..e69de29
+diff --git a/using System.txt b/using System.txt
+new file mode 100644
+index 0000000..158acb4
+--- /dev/null
++++ b/using System.txt	
+@@ -0,0 +1,81 @@
++using System;
++using System.IO;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++using CTOS_console;
++
++namespace CTOS_console {
++    class CTOSmain  userDB {
++
++        public static bool hacker_isInside = false;
++        public static string userNameIn;
++        public static string userPasswordIn;
++        public static string filename;
++
++        public static void Main() {
++            userDB user = new userDB();
++            
++            welcome();
++        }
++
++        public static void welcome() {
++            Console.ForegroundColor = ConsoleColor.Cyan;
++
++            Console.WriteLine(---------------------------------------);
++            Console.WriteLine(hallo und herzlich willkommen zu);
++            Console.WriteLine(---------------------------------------);
++            Console.WriteLine(@@@@@ @@@@@@@ @@@@@@ @@@@@@);
++            Console.WriteLine(@        @    @    @ @     );
++            Console.WriteLine(@        @    @    @ @@@@@@);
++            Console.WriteLine(@        @    @    @      @);
++            Console.WriteLine(@@@@@    @    @@@@@@ @@@@@@);
++            Console.WriteLine();
++
++            Console.ForegroundColor = ConsoleColor.White;
++            Console.WriteLine(Anmeldung);
++            Console.WriteLine();
++
++            Console.Write(Benutzernamen );
++            userNameIn = Console.ReadLine();
++            Console.Write(Passwort );
++            userPasswordIn = Console.ReadLine();
++            login();
++        }
++
++        public static void login() {
++            if (File.Exists(HdateienVisual Studio Community 2015CTOS_consoleCTOS_consoleuser + getFilename())) {
++                Console.WriteLine(getFilename());
++                if (CTOS_console.userDB.name.Equals(userNameIn)) {
++                    if (CTOS_console.userDB.password.Equals(userPasswordIn)) {
++
++                    } else {
++                        Console.ForegroundColor = ConsoleColor.Red;
++                        Console.WriteLine(falsches passwort);
++                        Console.ForegroundColor = ConsoleColor.White;
++                    }
++                } else {
++                    Console.ForegroundColor = ConsoleColor.Red;
++                    Console.WriteLine(sie haben kein akkount. Bitte wenden sie sich an den admin.);
++                    Console.ForegroundColor = ConsoleColor.White;
++                }
++            }
++            Console.ReadLine();
++        }
++
++        public static void logout() {
++
++        }
++
++        public static void restart() {
++            Console.Clear();
++            Main();
++        }
++
++        public static string getFilename() {
++            filename = userNameIn + .txt;
++            return filename;
++        }
++    }
++}
+diff --git a/waitLib/Properties/AssemblyInfo.cs b/waitLib/Properties/AssemblyInfo.cs
+new file mode 100644
+index 0000000..b67ca78
+--- /dev/null
++++ b/waitLib/Properties/AssemblyInfo.cs
+@@ -0,0 +1,36 @@
++﻿using System.Reflection;
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++
++// Allgemeine Informationen über eine Assembly werden über die folgenden
++// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
++// die einer Assembly zugeordnet sind.
++[assembly: AssemblyTitle("waitLib")]
++[assembly: AssemblyDescription("")]
++[assembly: AssemblyConfiguration("")]
++[assembly: AssemblyCompany("")]
++[assembly: AssemblyProduct("waitLib")]
++[assembly: AssemblyCopyright("Copyright ©  2018")]
++[assembly: AssemblyTrademark("")]
++[assembly: AssemblyCulture("")]
++
++// Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
++// für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von
++// COM aus zugreifen müssen, sollten Sie das ComVisible-Attribut für diesen Typ auf "True" festlegen.
++[assembly: ComVisible(false)]
++
++// Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
++[assembly: Guid("b6f0b2a2-e947-4066-9668-53804ed76bba")]
++
++// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
++//
++//      Hauptversion
++//      Nebenversion
++//      Buildnummer
++//      Revision
++//
++// Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
++// indem Sie "*" wie unten gezeigt eingeben:
++// [assembly: AssemblyVersion("1.0.*")]
++[assembly: AssemblyVersion("1.0.0.0")]
++[assembly: AssemblyFileVersion("1.0.0.0")]
+diff --git a/waitLib/Wait.cs b/waitLib/Wait.cs
+new file mode 100644
+index 0000000..32e5da4
+--- /dev/null
++++ b/waitLib/Wait.cs
+@@ -0,0 +1,65 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++namespace WaitLib {
++    public class Wait {
++        public static void waitSec(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddSeconds(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++
++        public static void waitMilsec(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddMilliseconds(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++
++        public static void waitMin(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddMinutes(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++
++        public static void waitHour(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddHours(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++
++        public static void waitDay(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddDays(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++
++        public static void waitMonth(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddMonths(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++
++        public static void waitYears(int x) {
++            DateTime t = DateTime.Now;
++            DateTime tf = DateTime.Now.AddYears(x);
++            while (t < tf) {
++                t = DateTime.Now;
++            }
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/waitLib/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/waitLib/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/waitLib/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/waitLib/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/waitLib/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/waitLib/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/waitLib/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs b/waitLib/obj/Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/waitLib/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs b/waitLib/obj/Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/waitLib/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs b/waitLib/obj/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+new file mode 100644
+index 0000000..e69de29
+diff --git a/waitLib/obj/Release/waitLib.csproj.FileListAbsolute.txt b/waitLib/obj/Release/waitLib.csproj.FileListAbsolute.txt
+new file mode 100644
+index 0000000..897093d
+--- /dev/null
++++ b/waitLib/obj/Release/waitLib.csproj.FileListAbsolute.txt
+@@ -0,0 +1,12 @@
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.dll
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.pdb
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csprojResolveAssemblyReference.cache
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csproj.CoreCompileInputs.cache
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.dll
++Z:\nexus\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.pdb
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.dll
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\bin\Release\waitLib.pdb
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csprojAssemblyReference.cache
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.csproj.CoreCompileInputs.cache
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.dll
++Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\waitLib\obj\Release\waitLib.pdb
+diff --git a/waitLib/waitLib.csproj b/waitLib/waitLib.csproj
+new file mode 100644
+index 0000000..4d56931
+--- /dev/null
++++ b/waitLib/waitLib.csproj
+@@ -0,0 +1,47 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
++  <PropertyGroup>
++    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
++    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
++    <ProjectGuid>{B6F0B2A2-E947-4066-9668-53804ED76BBA}</ProjectGuid>
++    <OutputType>Library</OutputType>
++    <AppDesignerFolder>Properties</AppDesignerFolder>
++    <RootNamespace>waitLib</RootNamespace>
++    <AssemblyName>waitLib</AssemblyName>
++    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
++    <FileAlignment>512</FileAlignment>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
++    <DebugSymbols>true</DebugSymbols>
++    <DebugType>full</DebugType>
++    <Optimize>false</Optimize>
++    <OutputPath>bin\Debug\</OutputPath>
++    <DefineConstants>DEBUG;TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
++    <DebugType>pdbonly</DebugType>
++    <Optimize>true</Optimize>
++    <OutputPath>bin\Release\</OutputPath>
++    <DefineConstants>TRACE</DefineConstants>
++    <ErrorReport>prompt</ErrorReport>
++    <WarningLevel>4</WarningLevel>
++  </PropertyGroup>
++  <ItemGroup>
++    <Reference Include="System" />
++    <Reference Include="System.Core" />
++    <Reference Include="System.Xml.Linq" />
++    <Reference Include="System.Data.DataSetExtensions" />
++    <Reference Include="Microsoft.CSharp" />
++    <Reference Include="System.Data" />
++    <Reference Include="System.Net.Http" />
++    <Reference Include="System.Xml" />
++  </ItemGroup>
++  <ItemGroup>
++    <Compile Include="Wait.cs" />
++    <Compile Include="Properties\AssemblyInfo.cs" />
++  </ItemGroup>
++  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
++</Project>
+\ No newline at end of file
