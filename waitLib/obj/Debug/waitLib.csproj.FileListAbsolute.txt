@@ -1,0 +1,5 @@
+D:\Moritz\Documents\Repos\CTOS_Console\waitLib\bin\Debug\waitLib.dll
+D:\Moritz\Documents\Repos\CTOS_Console\waitLib\bin\Debug\waitLib.pdb
+D:\Moritz\Documents\Repos\CTOS_Console\waitLib\obj\Debug\waitLib.csproj.CoreCompileInputs.cache
+D:\Moritz\Documents\Repos\CTOS_Console\waitLib\obj\Debug\waitLib.dll
+D:\Moritz\Documents\Repos\CTOS_Console\waitLib\obj\Debug\waitLib.pdb

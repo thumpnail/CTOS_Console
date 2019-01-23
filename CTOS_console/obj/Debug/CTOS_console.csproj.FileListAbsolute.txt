@@ -16,3 +16,13 @@ F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS
 F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\obj\Debug\CTOS_console.csprojResolveAssemblyReference.cache
 F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.exe
 F:\dateien\Visual Studio Community 2015\CTOS_console\CTOS_console\bin\Debug\CTOS_console.pdb
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\bin\Debug\CTOS_console.exe.config
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\bin\Debug\CTOS_console.exe
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\bin\Debug\CTOS_console.pdb
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\bin\Debug\waitLib.dll
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\bin\Debug\waitLib.pdb
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\obj\Debug\CTOS_console.csprojAssemblyReference.cache
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\obj\Debug\CTOS_console.csproj.CoreCompileInputs.cache
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\obj\Debug\CTOS_console.csproj.CopyComplete
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\obj\Debug\CTOS_console.exe
+D:\Moritz\Documents\Repos\CTOS_Console\CTOS_console\obj\Debug\CTOS_console.pdb

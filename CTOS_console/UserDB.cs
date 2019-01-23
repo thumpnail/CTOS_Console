@@ -28,34 +28,36 @@ namespace CTOS_Console {
             Wait.waitSec(1);
 
             System.IO.Directory.CreateDirectory(fileFolderPath);
-            Wait.waitSec(2);
-            File.Create(fileFolderPath + "/file.txt");
 
-            Wait.waitSec(2);
+            Wait.waitSec(1);
             Console.WriteLine(userFolderPath);
-            Wait.waitSec(2);
+            Wait.waitSec(1);
 
             System.IO.Directory.CreateDirectory(userFolderPath);
-            Wait.waitSec(2);
-            File.Create(userFolderPath + "/admin.txt");
-            Wait.waitSec(2);
-            System.IO.File.WriteAllLines(userFolderPath + "/admin.txt", linesUser);
-            Wait.waitSec(2);
+            Wait.waitSec(1);
+            StreamWriter adminWriter = new StreamWriter(userFolderPath + "/admin.txt");
+            for (int i = 0; i < linesUser.Length; i++) {
+                adminWriter.WriteLine(linesUser[i]);
+            }
+            adminWriter.Close();
+            Wait.waitSec(1);
 
             Console.WriteLine(userFolderPath);
             System.IO.Directory.CreateDirectory(userFolderPath);
-            Wait.waitSec(2);
-            File.Create(userFolderPath + "/h4ck3r.txt");
-            Wait.waitSec(2);
-            System.IO.File.WriteAllLines(userFolderPath + "/h4ck3r.txt", lineHacker);
-            Wait.waitSec(2);
+            Wait.waitSec(1);
+            StreamWriter hackerWriter = new StreamWriter(fileFolderPath + "/h4ck3r.txt");
+            for (int i = 0; i < lineHacker.Length; i++) {
+                hackerWriter.WriteLine(lineHacker[i]);
+            }
+            hackerWriter.Close();
+            Wait.waitSec(1);
 
             System.IO.File.WriteAllLines(fileFolderPath + "/file.txt", lineFile);
-            Wait.waitSec(2);
+            Wait.waitSec(1);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Please restart the programm!");
             Console.ForegroundColor = ConsoleColor.White;
-            Wait.waitSec(5);
+            Wait.waitSec(3);
             Environment.Exit(0);
 
         }

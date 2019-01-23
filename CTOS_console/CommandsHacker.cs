@@ -9,12 +9,10 @@ using WaitLib;
 namespace CTOS_Console {
     public class CommandsHacker {
 
-
-
         //command parameter
 
         private static bool knowIP = false;
-        private static string IP;
+        private static string IP = "";
         private static bool knowPS = false;
         private static bool isConnectedClient = false;
         private static bool isConnectedServer = false;
@@ -37,7 +35,7 @@ namespace CTOS_Console {
 
         public static void listCommands() {
             for (int i = 0; i < hackerCommands.Length; i++) {
-                if (i == 0 || i == 1 || i == 2 || i == 3 || i == 9 || i == 18) {
+                if (i == 0 || i == 1 || i == 2 || i == 3 || i == 9 || i == 15 || i == 18 ) {
                     Console.ForegroundColor = ConsoleColor.Green;
                 } else {
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -62,7 +60,7 @@ namespace CTOS_Console {
 
             for (int i = 0; i < rnd.Next(6, 20); i++) {
                 Console.Write(".");
-                Wait.waitSec(1);
+                Wait.waitMilsec(1);
             }
 
             ini = true;
@@ -78,27 +76,27 @@ namespace CTOS_Console {
                 if (knowIP && isConnectedClient && isConnectedInternet || knowIP && isConnectedGoogle && isConnectedInternet || knowIP && isConnectedMobilephone && isConnectedInternet || knowIP && isConnectedServer && isConnectedInternet) {
                     Console.WriteLine("Get component... Please wait");
 
-                    for (int i = 0; i < rnd.Next(30, 100); i++) {
+                    for (int i = 0; i < rnd.Next(30, 50); i++) {
                         Console.Write(".");
-                        Wait.waitMilsec(rnd.Next(100, 2000));
+                        Wait.waitMilsec(rnd.Next(16, 1000));
                     }
 
                     Console.WriteLine("Component downloaded");
-                    Wait.waitSec(2);
+                    Wait.waitMilsec(2);
                     Console.WriteLine("Search crack server...");
 
-                    for (int i = 0; i < rnd.Next(30, 1000); i++) {
+                    for (int i = 0; i < rnd.Next(10, 30); i++) {
                         Console.Write(".");
-                        Wait.waitMilsec(rnd.Next(100, 2000));
+                        Wait.waitMilsec(rnd.Next(16, 1000));
                     }
 
                     Console.WriteLine("Crack server found");
-                    Wait.waitSec(2);
+                    Wait.waitMilsec(2);
                     Console.WriteLine("Search password... Please wait");
 
-                    for (int i = 0; i < rnd.Next(30, 100); i++) {
+                    for (int i = 0; i < rnd.Next(30, 50); i++) {
                         Console.Write(".");
-                        Wait.waitMilsec(rnd.Next(100, 2000));
+                        Wait.waitMilsec(rnd.Next(16, 1000));
                     }
 
                     Console.WriteLine("Password found");
@@ -109,6 +107,10 @@ namespace CTOS_Console {
                     Console.WriteLine("you are not connected");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
+            } else {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("HackSoftware is not running");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
 
@@ -163,7 +165,10 @@ namespace CTOS_Console {
 
         public static void connect_client() {
             if (knowIP) {
-
+                Console.WriteLine("Verbinde mit Client");
+                Wait.waitMilsec(3);
+                isConnectedClient = true;
+                Console.WriteLine("Verbunden mit " + IP);
             }
         }
 
