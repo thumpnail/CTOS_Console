@@ -31,3 +31,11 @@ Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\no
 Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\waitLib.dll
 Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\bin\normal\waitLib.pdb
 Z:\Gaming\Documents\Visual Studio 2017\Projects\CTOS_console\CTOS_console\obj\normal\CTOS_console.csproj.CopyComplete
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\bin\normal\CTOS_console.exe.config
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\bin\normal\CTOS_console.exe
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\bin\normal\waitLib.dll
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\bin\normal\waitLib.pdb
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\obj\normal\CTOS_console.csprojAssemblyReference.cache
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\obj\normal\CTOS_console.csproj.CoreCompileInputs.cache
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\obj\normal\CTOS_console.csproj.CopyComplete
+D:\Moritz2000\Documents\Repos\CTOS_Console\CTOS_console\obj\normal\CTOS_console.exe
